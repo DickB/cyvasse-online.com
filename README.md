@@ -1,4 +1,4 @@
-webapp
-======
+Cyvasse-Online Webapp
+=====================
 
-Cyvasse game web app
+This is the webapp powering [cyvasse-online.com](http://cyvasse-online.com/).
