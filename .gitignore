@@ -21,15 +21,14 @@ libtool
 Makefile
 Makefile.in
 
-*.deps
-
 # Compiled files
 
 cyvasse-online
+webapp-conf.json
 
-404.cpp
-500.cpp
-page.cpp
+**/webapp/*.cpp
+
+*.deps
 
 *.slo
 *.lo

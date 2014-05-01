@@ -24,21 +24,19 @@ int main()
 	try
 	{
 		tnt::Tntnet app;
-		tnt::TntConfig& config = tnt::TntConfig::it();
+		//tnt::TntConfig& config = tnt::TntConfig::it();
 
-		// TODO: set config.documentRoot through the build system
-		//  when there are static files
+        // TODO: read webapp-conf.json
 
-		app.listen(8000);
+		app.listen(2517);
 		app.setAppName("cyvasse-online");
 
 		// static files
-		//app.mapUrl("^/static/(.+)$",  "static@tntnet").setPathInfo("$1");
-		//app.mapUrl("^/robots\\.txt$", "static@tntnet").setPathInfo("robots.txt");
+		app.mapUrl("^/(.+)$", "static@tntnet").setPathInfo("$1");
 
 		// dynamic content
-		app.mapUrl("^/$",                    "page").setArgs({{"content", "index"}});
-		app.mapUrl("^/match/(.*)$",          "page").setArgs({{"content", "game"}});
+		app.mapUrl("^/$",           "page").setArgs({{"content", "index"}});
+		app.mapUrl("^/match/(.*)$", "page").setArgs({{"content", "game"}});
 
 		app.run();
 	}
