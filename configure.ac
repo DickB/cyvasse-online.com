@@ -13,8 +13,11 @@ AC_PROG_SED
 
 LT_INIT
 
+AC_CONFIG_SUBDIRS([game])
+
 AC_CONFIG_FILES([
 	Makefile
+	webapp/Makefile
 	webapp-conf.json
 ])
 AC_OUTPUT

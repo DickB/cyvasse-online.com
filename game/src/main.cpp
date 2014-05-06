@@ -14,37 +14,14 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <tnt/tntnet.h>
-
-#include <cxxtools/log.h>
-log_define("cyvasse-online.main")
+#include "cyvasse_app.hpp"
 
 int main()
 {
-	try
-	{
-		tnt::Tntnet app;
-		//tnt::TntConfig& config = tnt::TntConfig::it();
-
-		// TODO: read webapp-conf.json
-
-		app.listen(2517);
-		app.setAppName("cyvasse-online");
-
-		// static files
-		app.mapUrl("^/(.+)$", "static@tntnet").setPathInfo("$1");
-
-		// dynamic content
-		app.mapUrl("^/$",           "page").setArgs({{"content", "index"}});
-		app.mapUrl("^/match/(.*)$", "page").setArgs({{"content", "game"}});
-
-		app.run();
-	}
-	catch(std::exception& e)
-	{
-		log_fatal(e.what());
-		return 1;
-	}
+	// instantiate the game class
+	CyvasseApp app;
+	// start the main loop
+	app.run();
 
 	return 0;
 }
