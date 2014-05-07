@@ -11,9 +11,7 @@ AC_CHECK_HEADER([tnt/tntnet.h], [], AC_MSG_ERROR([tntnet headers not found]))
 AC_CHECK_HEADER([tntdb/connection.h], [], AC_MSG_ERROR([tntdb headers not found]))
 AC_PROG_SED
 
-LT_INIT
-
-AC_CONFIG_SUBDIRS([game])
+AC_CONFIG_SUBDIRS([cyvmath game])
 
 AC_CONFIG_FILES([
 	Makefile
