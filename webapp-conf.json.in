@@ -1,3 +1,4 @@
 {
-    "documentRoot": "@top_srcdir@/webapp/static"
+    "documentRoot": "@top_srcdir@/webapp/static",
+    "gameBuildDir": "@top_builddir@/game"
 }
