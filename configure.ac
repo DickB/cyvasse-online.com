@@ -11,11 +11,16 @@ AC_CHECK_HEADER([tnt/tntnet.h], [], AC_MSG_ERROR([tntnet headers not found]))
 AC_CHECK_HEADER([tntdb/connection.h], [], AC_MSG_ERROR([tntdb headers not found]))
 AC_PROG_SED
 
+
+PKG_CHECK_MODULES([CPPUNIT], [cppunit], [have_cppunit=yes], [have_cppunit=no])
+AM_CONDITIONAL([HAVE_CPPUNIT], [test "$have_cppunit" = "yes"])
+
 AC_CONFIG_SUBDIRS([game])
 
 AC_CONFIG_FILES([
 	Makefile
-	webapp/Makefile
 	webapp-conf.json
+	webapp/Makefile
+	unit-tests/Makefile
 ])
 AC_OUTPUT
