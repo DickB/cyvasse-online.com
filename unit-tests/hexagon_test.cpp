@@ -16,6 +16,9 @@
 
 #include "hexagon_test.hpp"
 
+// for std::sort
+#include <algorithm>
+
 void HexagonTest::setUp()
 {
 	h6Coord1 = hexagon<6>::Coordinate::create(3, 5);
@@ -55,20 +58,14 @@ void HexagonTest::testCoordCompleteness()
 	CPPUNIT_ASSERT(hexagon<3>::getAllCoordinates().size() == 19);
 	CPPUNIT_ASSERT(hexagon<4>::getAllCoordinates().size() == 37);
 
-	int i = 0;
-	for(hexagon<2>::Coordinate c : hexagon<2>::getAllCoordinates())
-	{
-		switch(i)
-		{
-			case 0: CPPUNIT_ASSERT(c.x() == 0 && c.y() == 1); break;
-			case 1: CPPUNIT_ASSERT(c.x() == 0 && c.y() == 2); break;
-			case 2: CPPUNIT_ASSERT(c.x() == 1 && c.y() == 0); break;
-			case 3: CPPUNIT_ASSERT(c.x() == 1 && c.y() == 1); break;
-			case 4: CPPUNIT_ASSERT(c.x() == 1 && c.y() == 2); break;
-			case 5: CPPUNIT_ASSERT(c.x() == 2 && c.y() == 0); break;
-			case 6: CPPUNIT_ASSERT(c.x() == 2 && c.y() == 1); break;
-		}
+	std::vector<hexagon<2>::Coordinate> coords = hexagon<2>::getAllCoordinates();
+	std::sort(coords.begin(), coords.end());
 
-		i++;
-	}
+	CPPUNIT_ASSERT(coords.at(0) == *hexagon<2>::Coordinate::create(0, 1));
+	CPPUNIT_ASSERT(coords.at(1) == *hexagon<2>::Coordinate::create(0, 2));
+	CPPUNIT_ASSERT(coords.at(2) == *hexagon<2>::Coordinate::create(1, 0));
+	CPPUNIT_ASSERT(coords.at(3) == *hexagon<2>::Coordinate::create(1, 1));
+	CPPUNIT_ASSERT(coords.at(4) == *hexagon<2>::Coordinate::create(1, 2));
+	CPPUNIT_ASSERT(coords.at(5) == *hexagon<2>::Coordinate::create(2, 0));
+	CPPUNIT_ASSERT(coords.at(6) == *hexagon<2>::Coordinate::create(2, 1));
 }
