@@ -27,8 +27,8 @@ using namespace cyvmath;
 class HexagonTest : public CppUnit::TestFixture
 {
 	private:
-		hexagon<6>::Coordinate* h6Coord1;
-		hexagon<6>::Coordinate* h6Coord2;
+		std::unique_ptr<hexagon<6>::Coordinate> h6Coord1;
+		std::unique_ptr<hexagon<6>::Coordinate> h6Coord2;
 
 	public:
 		void setUp() override;

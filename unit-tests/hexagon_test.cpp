@@ -27,14 +27,14 @@ void HexagonTest::setUp()
 
 void HexagonTest::tearDown()
 {
-	delete h6Coord1;
-	delete h6Coord2;
+	h6Coord1.reset();
+	h6Coord2.reset();
 }
 
 void HexagonTest::testCoordValidity()
 {
-	CPPUNIT_ASSERT(h6Coord1 != nullptr);
-	CPPUNIT_ASSERT(h6Coord2 != nullptr);
+	CPPUNIT_ASSERT(h6Coord1);
+	CPPUNIT_ASSERT(h6Coord2);
 
 	CPPUNIT_ASSERT(hexagon<6>::Coordinate::create( 0, 11) == nullptr); // outside – top
 	CPPUNIT_ASSERT(hexagon<6>::Coordinate::create( 8,  9) == nullptr); // outside – top right
