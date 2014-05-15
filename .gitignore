@@ -21,6 +21,7 @@ Makefile.in
 
 cyvasse.js
 cyvasse-online
+cyvmath-tests
 webapp-conf.json
 
 **/webapp/*.cpp
